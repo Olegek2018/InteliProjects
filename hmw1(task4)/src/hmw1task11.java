@@ -6,8 +6,7 @@ import java.util.Scanner;
 записанных в переменные m и n. Например, среди чисел 8,5 и 11,45 ближайшее к десяти 11,45.
  */
 
-*/
- */
+
 /*
 public class hmw1task11public static void main(String[] args)  {
     ten(1,1);
