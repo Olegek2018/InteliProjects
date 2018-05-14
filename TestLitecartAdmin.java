@@ -112,7 +112,7 @@ public class TestLitecartAdmin {
 
         driver.findElement(By.xpath(".//*[@id='app-']/a/span[2]")).click();//.//*[@id='app-']/a/span[2]   Catalog
         //Thread.sleep(2000);
-            wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("h1"))); // null pointer exception
+            wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("h1"))); // "null pointer exception" - if "wait" not declared
         //driver.findElement(By.cssSelector("fa-stack fa-lg icon-wrapper")).click();// Catalog by CSS?
         driver.findElement(By.xpath("(//li[@id='app-']/a/span[2])[2]")).click();//Why brackets?? ("(...)")
             wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("h1")));
