@@ -1,0 +1,120 @@
+{
+  "$id": "http://example.com/example.json",
+  "type": "object",
+  "definitions": {},
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "properties": {
+    "destination_addresses": {
+      "$id": "/properties/destination_addresses",
+      "type": "array",
+      "items": {
+        "$id": "/properties/destination_addresses/items",
+        "type": "string",
+        "title": "The 0th Schema ",
+        "default": "",
+        "examples": [
+          "New York, NY, USA"
+        ]
+      }
+    },
+    "origin_addresses": {
+      "$id": "/properties/origin_addresses",
+      "type": "array",
+      "items": {
+        "$id": "/properties/origin_addresses/items",
+        "type": "string",
+        "title": "The 0th Schema ",
+        "default": "",
+        "examples": [
+          "Washington, DC, USA"
+        ]
+      }
+    },
+    "rows": {
+      "$id": "/properties/rows",
+      "type": "array",
+      "items": {
+        "$id": "/properties/rows/items",
+        "type": "object",
+        "properties": {
+          "elements": {
+            "$id": "/properties/rows/items/properties/elements",
+            "type": "array",
+            "items": {
+              "$id": "/properties/rows/items/properties/elements/items",
+              "type": "object",
+              "properties": {
+                "distance": {
+                  "$id": "/properties/rows/items/properties/elements/items/properties/distance",
+                  "type": "object",
+                  "properties": {
+                    "text": {
+                      "$id": "/properties/rows/items/properties/elements/items/properties/distance/properties/text",
+                      "type": "string",
+                      "title": "The Text Schema ",
+                      "default": "",
+                      "examples": [
+                        "225 mi"
+                      ]
+                    },
+                    "value": {
+                      "$id": "/properties/rows/items/properties/elements/items/properties/distance/properties/value",
+                      "type": "integer",
+                      "title": "The Value Schema ",
+                      "default": 0,
+                      "examples": [
+                        361715
+                      ]
+                    }
+                  }
+                },
+                "duration": {
+                  "$id": "/properties/rows/items/properties/elements/items/properties/duration",
+                  "type": "object",
+                  "properties": {
+                    "text": {
+                      "$id": "/properties/rows/items/properties/elements/items/properties/duration/properties/text",
+                      "type": "string",
+                      "title": "The Text Schema ",
+                      "default": "",
+                      "examples": [
+                        "3 hours 49 mins"
+                      ]
+                    },
+                    "value": {
+                      "$id": "/properties/rows/items/properties/elements/items/properties/duration/properties/value",
+                      "type": "integer",
+                      "title": "The Value Schema ",
+                      "default": 0,
+                      "examples": [
+                        13725
+                      ]
+                    }
+                  }
+                },
+                "status": {
+                  "$id": "/properties/rows/items/properties/elements/items/properties/status",
+                  "type": "string",
+                  "title": "The Status Schema ",
+                  "default": "",
+                  "examples": [
+                    "OK"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "status": {
+      "$id": "/properties/status",
+      "type": "string",
+      "title": "The Status Schema ",
+      "default": "",
+      "examples": [
+        "OK"
+      ]
+    }
+  }
+}
