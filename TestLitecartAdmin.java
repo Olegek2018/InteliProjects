@@ -41,27 +41,33 @@ public class TestLitecartAdmin {
     public void open() {driver.get("http://localhost/litecart/admin");}
 
     @Before
-    public void login (String username, String password) throws InterruptedException {
-        //for pop up window with login form (chrome)
 
-    /*driver.switchTo().alert();
-//Selenium-WebDriver Java Code for entering Username & Password as below: - for pop-up
-    driver.findElement(By.id("username")).sendKeys(username);
-    driver.findElement(By.id("password")).sendKeys(password);
-    driver.switchTo().alert().accept();
-    driver.switchTo().defaultContent();*/
+    AdminLogin
 
-        driver.findElement(By.name("username")).sendKeys(username);
-        driver.findElement(By.name("password")).sendKeys(password);
-        driver.findElement(By.cssSelector("[type='submit']")).click();
+//     public void login (String username, String password) throws InterruptedException {
+//        //for pop up window with login form (chrome)
+//
+//    /*driver.switchTo().alert();
+////Selenium-WebDriver Java Code for entering Username & Password as below: - for pop-up
+//    driver.findElement(By.id("username")).sendKeys(username);
+//    driver.findElement(By.id("password")).sendKeys(password);
+//    driver.switchTo().alert().accept();
+//    driver.switchTo().defaultContent();*/
+//
+//        driver.findElement(By.name("username")).sendKeys(username);
+//        driver.findElement(By.name("password")).sendKeys(password);
+//        driver.findElement(By.cssSelector("[type='submit']")).click();
+//
+//    }
 
-    }
+
+
 
     @Test
     public void testCanLoginAsAdmin() throws InterruptedException {//"InterruptedException" added because of Thread.sleep - command
         open();
         Thread.sleep(2000);//to see login form
-        login("admin", "mysql");
+        AdminLogin("admin", "mysql");
         Thread.sleep(2000);
         //clickall();
 
@@ -83,9 +89,22 @@ public class TestLitecartAdmin {
         //Assert.assertEquals(alertText, "x"+ "\n" + "You must provide a username");
         Assert.assertEquals(alertText,"×" + "\n" +"You must provide a username");
 
+        //or
+//
+//
+//    @Test
+//+    public void testCheckAlertMessageForEmptyUserData() throws InterruptedException {
+//        +        AdminPage adminPage = new AdminPage(driver);
+//        +        String alertText;
+//        +
+//                +        alertText = adminPage.getAlertText();
+//        +        Assert.assertEquals(alertText,"×" + "\n" +"You must provide a username");
+//        +
+
     }
 
     @Test
+    //Appearance
     public void testadminAppearance() throws InterruptedException {//"InterruptedException" added because of Thread.sleep - command
         Thread.sleep(1000);
         //driver.findElement(By.tagName("h1"));
@@ -96,8 +115,8 @@ public class TestLitecartAdmin {
         WebDriverWait wait = new WebDriverWait(driver, 3);
         wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("//li[@id='app-']/a/span[2]")));//fa-stack icon-wrapper
 
-        driver.findElement(By.xpath(".//*[@id='app-']/a/span[2]")).click();// Appearance
-        Thread.sleep(1000);
+        Appearance();
+
         driver.findElement(By.xpath(".//*[@id='doc-template']/a/span")).click();
         wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("h1")));
         //Thread.sleep(1000);
@@ -106,15 +125,19 @@ public class TestLitecartAdmin {
         WebElement element = wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("h1")));
     }
 
+    private void Appearance() throws InterruptedException {
+        driver.findElement(By.xpath(".//*[@id='app-']/a/span[2]")).click();// Appearance
+        Thread.sleep(1000);
+    }
+
+    //  CatalogAll
         @Test
         public void testadminCatalog() throws InterruptedException {//"InterruptedException" added because of Thread.sleep - command
         WebDriverWait wait = new WebDriverWait(driver, 3);
 
-        driver.findElement(By.xpath(".//*[@id='app-']/a/span[2]")).click();//.//*[@id='app-']/a/span[2]   Catalog
-        //Thread.sleep(2000);
-            wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("h1"))); // "null pointer exception" - if "wait" not declared
-        //driver.findElement(By.cssSelector("fa-stack fa-lg icon-wrapper")).click();// Catalog by CSS?
-        driver.findElement(By.xpath("(//li[@id='app-']/a/span[2])[2]")).click();//Why brackets?? ("(...)")
+            Catalog(wait);
+
+        driver.findElement(By.xpath("(//li[@id='app-']/a/span[2])[2]")).click();
             wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("h1")));
         driver.findElement(By.xpath("//li[@id='doc-catalog']/a/span")).click();//catalog inside of Catalog
             wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("h1")));
@@ -136,12 +159,22 @@ public class TestLitecartAdmin {
         wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("h1")));
 
         }
+
+    private void Catalog(WebDriverWait wait) {
+        driver.findElement(By.xpath(".//*[@id='app-']/a/span[2]")).click();//.//*[@id='app-']/a/span[2]   Catalog
+        //Thread.sleep(2000);
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("h1"))); // "null pointer exception" - if "wait" not declared
+        //driver.findElement(By.cssSelector("fa-stack fa-lg icon-wrapper")).click();// Catalog by CSS?
+    }
+
+    //Countries
     @Test
     public void testadminCountries() throws InterruptedException {//"InterruptedException" added because of Thread.sleep - command
         WebDriverWait wait = new WebDriverWait(driver, 4);
         driver.findElement(By.xpath("(//li[@id='app-']/a/span[2])[3]")).click();//Countries
             wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("h1")));
     }
+    //Currencies
     @Test
     public void testadminCurrencies() throws InterruptedException {//"InterruptedException" added because of Thread.sleep - command
         WebDriverWait wait = new WebDriverWait(driver, 3);
@@ -309,4 +342,16 @@ public class TestLitecartAdmin {
     @After
     public void logout() {driver.findElement(By.cssSelector(".fa.fa-sign-out.fa-lg")).click();}
 
+
+    /*
+    * public void logout(){
++
++        WebDriverWait wait = new WebDriverWait(driver, 2);
++        wait.until(ExpectedConditions.visibilityOf(logoutButton));
++        logoutButton.click();
+    *
+    * */
+
+
+//
 }
