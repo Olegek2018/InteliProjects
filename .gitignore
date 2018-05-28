@@ -2,4 +2,5 @@ main
 target
 .idea
 *.iml
-C:\Users\Oleg\Downloads\sampleTestC-master (2)\sampleTestC-master\src\test\java\TestLitecartShop.java
+TestLitecartShop.java
+src/test
