@@ -1,4 +1,5 @@
-
-AddTwoValuesTests.java
-RestTest.java
-TestLitecartShop.java
+main
+target
+.idea
+*.iml
+C:\Users\Oleg\Downloads\sampleTestC-master (2)\sampleTestC-master\src\test\java\TestLitecartShop.java
