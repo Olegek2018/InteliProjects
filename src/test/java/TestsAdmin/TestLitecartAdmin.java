@@ -1,15 +1,17 @@
 package TestsAdmin;
 
 import Pages.AdminLogin;
-import org.junit.After;
-import org.junit.Before;
+import Pages.MainAdminPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 
@@ -17,63 +19,24 @@ public class TestLitecartAdmin {
 
     WebDriver driver;
     public WebDriverWait wait;
-    //private WebDriverWait;
 
-    @BeforeClass// @BeforeMethod
-
-    @Before
+    @BeforeClass
     public void setup() {
-        // driver = new ChromeDriver();
-        // driver = new FirefoxDriver();
 
-//delete 2 files (*.pswg...)
-        System.setProperty("webdriver.chrome.driver", "C:/Users/Oleg/Downloads/chromedriver_win32/chromedriver.exe");//input in parameterized..
+        System.setProperty("webdriver.chrome.driver", "C:/Users/Oleg/Downloads/chromedriver_win32/chromedriver.exe");
         driver = new ChromeDriver();
-        //driver.get("http://localhost/litecart/admin");
+        driver.manage().window().maximize();
 
     }
-    /*//ChromeDriverManger.getInstance().setup();
 
-            driver.manage().window().maximize();
-}*/
-
-    @Before
+    @BeforeTest
     public void open() {driver.get("http://localhost/litecart/admin");}
-
-    @Before
-    //AdminLogin
-
-//     public void login (String username, String password) throws InterruptedException {
-//        //for pop up window with login form (chrome)
-//
-//    /*driver.switchTo().alert();
-////Selenium-WebDriver Java Code for entering Username & Password as below: - for pop-up
-//    driver.findElement(By.id("username")).sendKeys(username);
-//    driver.findElement(By.id("password")).sendKeys(password);
-//    driver.switchTo().alert().accept();
-//    driver.switchTo().defaultContent();*/
-//
-//        driver.findElement(By.name("username")).sendKeys(username);
-//        driver.findElement(By.name("password")).sendKeys(password);
-//        driver.findElement(By.cssSelector("[type='submit']")).click();
-//
-//    }
-
-
 
 
     @Test
     public void testCanLoginAsAdmin() throws InterruptedException {//"InterruptedException" added because of Thread.sleep - command
         AdminLogin adminLogin = new AdminLogin(driver);
-        open();
-        Thread.sleep(2000);//to see login form
         adminLogin.login("admin", "mysql");
-        Thread.sleep(2000);
-        //clickall();
-
-        //driver.get("http://localhost/litecart/admin");
-
-        //testCheckAlertMessageForEmptyUserData();
     }
 
     //It`s comment due to unable to find cssSelector ("...submit")
@@ -106,7 +69,8 @@ public class TestLitecartAdmin {
 
     @Test
     //Appearance
-    public void testadminAppearance() throws InterruptedException {//"InterruptedException" added because of Thread.sleep - command
+    public void testadminAppearance() throws InterruptedException {
+        //"InterruptedException" added because of Thread.sleep - command
         Thread.sleep(1000);
         //driver.findElement(By.tagName("h1"));
 
@@ -338,6 +302,29 @@ public class TestLitecartAdmin {
     }
 
     @Test
+    private void testClicOnReportsLink(){
+        MainAdminPage mainAdminPage = new MainAdminPage(driver);
+        mainAdminPage.clickOnLink(mainAdminPage.getReportsSidebarLink());
+        String reportText = mainAdminPage.getHeaderText();
+        Assert.assertEquals(reportText,"");
+
+        mainAdminPage.clickOnLink(mainAdminPage.getMostShoppingCustomersLink());
+        String shoppingText = mainAdminPage.getHeaderText();
+        Assert.assertEquals(shoppingText,"");
+
+        mainAdminPage.clickOnLink(mainAdminPage.getMostSoldProductsLink());
+        String productText = mainAdminPage.getHeaderText();
+        Assert.assertEquals(productText,"");
+
+        mainAdminPage.clickOnLink(mainAdminPage.getMostSoldProductsLink());
+        String soldText = mainAdminPage.getHeaderText();
+        Assert.assertEquals(soldText,"");
+
+
+
+    }
+
+    @Test
     public void testadminSettings() throws InterruptedException {//"InterruptedException" added because of Thread.sleep-command
 
         //testSettings
@@ -450,27 +437,5 @@ public class TestLitecartAdmin {
     }
 
 
-    //Thread.sleep(1000);
-        //driver.findElement(By.cssSelector("doc-catalog > a > span.name")).click();
-        //css=#doc-catalog > a > span.name
-        //driver.findElement(By.xpath(".//*[@id='doc-catalog']/a/span")).click();
 
-
-
-
-    @After
-    public void logout() {driver.findElement(By.cssSelector(".fa.fa-sign-out.fa-lg")).click();}
-
-
-    /*
-    * public void logout(){
-+
-+        WebDriverWait wait = new WebDriverWait(driver, 2);
-+        wait.until(ExpectedConditions.visibilityOf(logoutButton));
-+        logoutButton.click();
-    *
-    * */
-
-
-//
 }

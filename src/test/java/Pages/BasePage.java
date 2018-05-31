@@ -9,11 +9,8 @@ public class BasePage {
     WebDriverWait wait;
 
     public BasePage (WebDriver driver) {
-
         this.driver = driver;
         this.wait = wait;
-
-
     }
 
 }
