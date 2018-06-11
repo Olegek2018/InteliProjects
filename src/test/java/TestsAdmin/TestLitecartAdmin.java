@@ -9,10 +9,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeTest;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
 
 
 public class TestLitecartAdmin {
@@ -29,8 +26,10 @@ public class TestLitecartAdmin {
 
     }
 
-    @BeforeTest
-    public void open() {driver.get("http://localhost/litecart/admin");}
+    @Test
+    public void open() {
+        driver.get("http://localhost/litecart/admin"); //driver.get("http://localhost/litecart/admin");
+        }
 
 
     @Test
@@ -290,6 +289,8 @@ public class TestLitecartAdmin {
     }
 
     private void testReports() {
+        MainAdminPage mainAdminPage = new MainAdminPage(driver);
+
         WebDriverWait wait = new WebDriverWait(driver, 2);
         driver.findElement(By.xpath("(//li[@id='app-']/a/span[2])[11]")).click();//Reports
         wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("h1")));
@@ -302,8 +303,10 @@ public class TestLitecartAdmin {
     }
 
     @Test
-    private void testClicOnReportsLink(){
+    private void testClickOnReportsLink(){
+
         MainAdminPage mainAdminPage = new MainAdminPage(driver);
+
         mainAdminPage.clickOnLink(mainAdminPage.getReportsSidebarLink());
         String reportText = mainAdminPage.getHeaderText();
         Assert.assertEquals(reportText,"");

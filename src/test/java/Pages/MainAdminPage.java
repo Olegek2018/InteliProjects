@@ -6,8 +6,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-
+import org.openqa.selenium.support.ui.WebDriverWait;  //C:\litecartAdminC:\litecartAdmin//
+//C:\litecartAdmin
 public class MainAdminPage extends AdminLogin {
     public MainAdminPage(WebDriver driver) {
         super(driver);
@@ -18,11 +18,13 @@ public class MainAdminPage extends AdminLogin {
     @FindBy(css = ".fa.fa-sign-out.fa-lg")
     private WebElement logoutButton;
 
-    @FindBy(css = "a[href*=reports]")
+    @FindBy(css = "a[href*=reports]") // xpath = "(//li[@id='app-']/a/span[2])[11]")) //(css = "a[href*=reports]")
     private WebElement reportsSidebarLink;
 
     @FindBy(css = "h1")
     private WebElement headerTitle;
+
+
 
     public WebElement getReportsSidebarLink() {
         return reportsSidebarLink;
