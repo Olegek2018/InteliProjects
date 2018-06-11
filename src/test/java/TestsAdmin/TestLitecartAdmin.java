@@ -19,18 +19,15 @@ public class TestLitecartAdmin {
 
     @BeforeClass
     public void setup() {
-
         System.setProperty("webdriver.chrome.driver", "C:/Users/Oleg/Downloads/chromedriver_win32/chromedriver.exe");
         driver = new ChromeDriver();
         driver.manage().window().maximize();
-
     }
 
     @Test
     public void open() {
-        driver.get("http://localhost/litecart/admin"); //driver.get("http://localhost/litecart/admin");
+        driver.get("http://localhost/litecart/admin");
         }
-
 
     @Test
     public void testCanLoginAsAdmin() throws InterruptedException {//"InterruptedException" added because of Thread.sleep - command
@@ -38,44 +35,11 @@ public class TestLitecartAdmin {
         adminLogin.login("admin", "mysql");
     }
 
-    //It`s comment due to unable to find cssSelector ("...submit")
-//    @Test
-//    public void testCheckAlertMessageForEmptyUserData() throws InterruptedException {
-//        open();
-//        String alertText;
-//        Thread.sleep(2000);
-//        //driver.findElement(By.cssSelector("[type='submit']")).click();
-//        WebDriverWait wait = new WebDriverWait(driver, 3);
-//        wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.cssSelector(".alert.alert-danger")));
-//        Thread.sleep(2000);
-//        alertText = driver.findElement(By.cssSelector(".alert.alert-danger")).getText();
-//        //Assert.assertEquals(alertText, "x"+ "\n" + "You must provide a username");
-//        Assert.assertEquals(alertText,"×" + "\n" +"You must provide a username");
-
-        //or
-//
-//
-//    @Test
-//+    public void testCheckAlertMessageForEmptyUserData() throws InterruptedException {
-//        +        AdminPage adminPage = new AdminPage(driver);
-//        +        String alertText;
-//        +
-//                +        alertText = adminPage.getAlertText();
-//        +        Assert.assertEquals(alertText,"×" + "\n" +"You must provide a username");
-//        +
-
-    //}
-
     @Test
     //Appearance
     public void testadminAppearance() throws InterruptedException {
         //"InterruptedException" added because of Thread.sleep - command
         Thread.sleep(1000);
-        //driver.findElement(By.tagName("h1"));
-
-        //WebElement header1 = driver.findElement(By.tagName("h1"));
-        //wait.until(Element)
-        // add H1 check
         WebDriverWait wait = new WebDriverWait(driver, 3);
         wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("//li[@id='app-']/a/span[2]")));//fa-stack icon-wrapper
 
@@ -121,7 +85,6 @@ public class TestLitecartAdmin {
             wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("h1")));
         driver.findElement(By.cssSelector("#doc-csv > a > span.name")).click();
         wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("h1")));
-
         }
 
     private void Catalog(WebDriverWait wait) {
@@ -135,7 +98,6 @@ public class TestLitecartAdmin {
     @Test
     public void testadminCountries() throws InterruptedException {//"InterruptedException" added because of Thread.sleep - command
         //Countries
-
         countries(4, "(//li[@id='app-']/a/span[2])[3]");
     }
 
@@ -150,7 +112,6 @@ public class TestLitecartAdmin {
     public void testadminCurrencies() throws InterruptedException {//"InterruptedException" added because of Thread.sleep - command
 
         //Currencies
-
         currencies();
     }
 
@@ -164,7 +125,6 @@ public class TestLitecartAdmin {
     public void testadminCustomers() throws InterruptedException {//"InterruptedException" added because of Thread.sleep - command
 
         //Customers
-
         customers();
 
     }
@@ -185,7 +145,6 @@ public class TestLitecartAdmin {
     public void testadminGeoZones() throws InterruptedException {//"InterruptedException" added because of Thread.sleep - command
 
         //Geo Zones
-
         geoZones();
 
     }
@@ -200,8 +159,6 @@ public class TestLitecartAdmin {
     public void testadminLanguages() throws InterruptedException {//"InterruptedException" added because of Thread.sleep-command
 
         //Languages
-
-
         languages();
     }
 
@@ -220,7 +177,6 @@ public class TestLitecartAdmin {
 
 
         //Modules
-
         modules();
     }
 
@@ -245,7 +201,6 @@ public class TestLitecartAdmin {
     public void testadminOrders() throws InterruptedException {//"InterruptedException" added because of Thread.sleep-command
 
         //Orders
-
         orders();
     }
 
@@ -266,7 +221,6 @@ public class TestLitecartAdmin {
     public void testadminPages() throws InterruptedException {//"InterruptedException" added because of Thread.sleep-command
 
         //tesatadminPages
-
         tesatadminPages();
     }
 
@@ -284,7 +238,6 @@ public class TestLitecartAdmin {
     public void testadminReports() throws InterruptedException {//"InterruptedException" added because of Thread.sleep-command
 
         //testReports
-
         testReports();
     }
 
@@ -322,17 +275,12 @@ public class TestLitecartAdmin {
         mainAdminPage.clickOnLink(mainAdminPage.getMostSoldProductsLink());
         String soldText = mainAdminPage.getHeaderText();
         Assert.assertEquals(soldText,"");
-
-
-
     }
 
     @Test
     public void testadminSettings() throws InterruptedException {//"InterruptedException" added because of Thread.sleep-command
 
         //testSettings
-
-
         testSettings();
     }
 
@@ -362,7 +310,6 @@ public class TestLitecartAdmin {
     public void testadminSlides() throws InterruptedException {//"InterruptedException" added because of Thread.sleep-command
 
         //Slides
-
         slides();
     }
 
@@ -376,7 +323,6 @@ public class TestLitecartAdmin {
     public void testadminTax() throws InterruptedException {//"InterruptedException" added because of Thread.sleep-command
 
         //Tax
-
         tax();
     }
 
@@ -394,8 +340,6 @@ public class TestLitecartAdmin {
     public void testadminTranslations() throws InterruptedException {//"InterruptedException" added because of Thread.sleep-command
 
         //Translations
-
-
         translations();
     }
 
@@ -415,7 +359,6 @@ public class TestLitecartAdmin {
     public void testadminUsers() throws InterruptedException {//"InterruptedException" added because of Thread.sleep-command
 
         //Users
-
         users();
     }
 
@@ -429,7 +372,6 @@ public class TestLitecartAdmin {
     public void testadminvQmods() throws InterruptedException {//"InterruptedException" added because of Thread.sleep-command
 
         //vQmods
-
         VQmods();
     }
 
@@ -438,7 +380,5 @@ public class TestLitecartAdmin {
         driver.findElement(By.xpath("(//li[@id='app-']/a/span[2])[17]")).click();//vQmods
         wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("h1")));
     }
-
-
-
+    
 }

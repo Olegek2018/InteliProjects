@@ -11,7 +11,6 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class AdminLogin extends BasePage { //WebDriver driver, String username, String password
 
-
     public AdminLogin(WebDriver driver) {
         super(driver);
         this.driver = driver;
@@ -26,7 +25,6 @@ public class AdminLogin extends BasePage { //WebDriver driver, String username, 
 
     @FindBy(name = "password")
     private WebElement passwordField;
-
 
     public MainAdminPage login(String username, String password) {
         loginField.sendKeys(username);

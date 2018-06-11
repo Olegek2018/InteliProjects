@@ -6,7 +6,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;  //C:\litecartAdminC:\litecartAdmin//
+import org.openqa.selenium.support.ui.WebDriverWait;
 //C:\litecartAdmin
 public class MainAdminPage extends AdminLogin {
     public MainAdminPage(WebDriver driver) {
@@ -14,7 +14,6 @@ public class MainAdminPage extends AdminLogin {
         this.driver = driver;
         PageFactory.initElements(driver, this);
     }
-
     @FindBy(css = ".fa.fa-sign-out.fa-lg")
     private WebElement logoutButton;
 
@@ -23,8 +22,6 @@ public class MainAdminPage extends AdminLogin {
 
     @FindBy(css = "h1")
     private WebElement headerTitle;
-
-
 
     public WebElement getReportsSidebarLink() {
         return reportsSidebarLink;
@@ -38,7 +35,6 @@ public class MainAdminPage extends AdminLogin {
     public WebElement getMostSoldProductsLink() {
         return mostSoldProductsLink;
     }
-
     public WebElement getMostShoppingCustomersLink() {
         return mostShoppingCustomersLink;
     }
@@ -52,7 +48,6 @@ public class MainAdminPage extends AdminLogin {
     @FindBy(css = "#doc-most_shopping_customers")
     private WebElement mostShoppingCustomersLink;
 
-
     public String getHeaderText(){
         return headerTitle.getText();
     }
@@ -60,7 +55,6 @@ public class MainAdminPage extends AdminLogin {
     public void clickOnLink(WebElement element){
         element.click();
     }
-
 
     public void logout() {
         WebDriverWait wait = new WebDriverWait(driver, 2);
